@@ -6,15 +6,19 @@ class Negotiation {
     private value: number) 
   {}
 
-  getDate() {
+  get negDate() {
     return this.date;
   }
 
-  getQuantity() {
+  get negQuantity() {
     return this.quantity;
   }
 
-  getValue() {
+  get negValue() {
     return this.value;
+  }
+
+  get negVolume(){
+    return this.quantity * this.value;
   }
 }

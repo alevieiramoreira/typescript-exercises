@@ -4,11 +4,14 @@ class NegotiationController {
   private inputQuantity: HTMLInputElement;
   private inputValue: HTMLInputElement;
   private negotiations = new NegotiationList();
+  private negotiationsView = new NegotiationsView('#negotiationsView');
+  private messageView = new MessageView('#mensagemView');
 
   constructor() {
     this.inputDate = document.querySelector('#data');
     this.inputQuantity = document.querySelector('#quantidade');
     this.inputValue = document.querySelector('#valor');
+    this.negotiationsView.update(this.negotiations);
   }
 
   add(event: Event) {
@@ -22,12 +25,9 @@ class NegotiationController {
 
     this.negotiations.add(negotiation);
 
-      console.log(this.negotiations)
+    this.negotiationsView.update(this.negotiations);
 
-    this.negotiations.showNegotiations().length = 0;
+    this.messageView.update('Negociação adicionada com sucesso!');
 
-    this.negotiations.showNegotiations().forEach(negotiation => (
-      console.log(negotiation)
-    ))
   }
 }
